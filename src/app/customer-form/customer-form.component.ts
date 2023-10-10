@@ -24,7 +24,7 @@ export class CustomerFormComponent {
     { 'Maybach': ['Zeppelin', 'Exelero', 'GLS', 'SW35', 'SW45'] },
     { 'Porsche': ['911', 'Cayenne', 'Panamera', '718 Cayman', 'Macan'] },
   ];
-
+  refCode: string = ''
   refRegex: string = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
 
   constructor(private fb: FormBuilder, private router: Router) {
@@ -35,7 +35,15 @@ export class CustomerFormComponent {
       email: ["", [Validators.required, Validators.email]],
       maker: ["", Validators.required],
       model: ["", Validators.required],
-      conditions: this.fb.group({}),
+      conditions: this.fb.group({
+        brakeIssue: [[false], Validators.required],
+        engineIssue: [[false], Validators.required],
+        oilLeakage: [[false], Validators.required],
+        wiringProblem: [[false], Validators.required],
+        needRepainting: [[false], Validators.required],
+        needBodyRepair: [[false], Validators.required],
+        gearboxIssue: [[false], Validators.required]
+      }),
     });
   }
 
@@ -47,11 +55,11 @@ export class CustomerFormComponent {
   }
 
   onNext() {
+    this.customerForm.markAllAsTouched();
+
     if (this.customerForm.valid) {
       const formData = this.customerForm.value;
-      const selectedConditions = Object.keys(formData.conditions).filter(
-        condition => formData.conditions[condition]
-      );
+      const selectedConditions = this.customerForm.get('conditions')?.value
 
       const data = {
         firstName: formData.firstName,
@@ -62,10 +70,11 @@ export class CustomerFormComponent {
         selectedModel: formData.model,
         selectedConditions: selectedConditions,
       };
-
-      this.router.navigate(['/summary'], { state: { data } });
+      console.log(data)
+      // this.router.navigate(['/summary'], { state: { data } });
     } else {
       // Handle validation errors
+      alert("Please fill all required fields correctly")
     }
   }
 }
