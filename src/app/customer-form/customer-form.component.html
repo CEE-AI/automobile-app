@@ -1,32 +1,32 @@
 <!-- customer-form.component.html -->
 
 <form [formGroup]="customerForm" class="container-fluid row g-3">
-  <h2>Customer's Information</h2>
-  <div class="form-group col-md-6">
+  <h2 class="title">Customer's Information</h2>
+  <div class="form-group col-lg-6">
     <label for="firstName">First Name</label>
     <input type="text" id="firstName" class="form-control" formControlName="firstName" [ngClass]="{'is-invalid' : customerForm.get('firstName')?.touched && customerForm.get('firstName')?.invalid}">
   </div>
-  <div class="form-group col-md-6">
+  <div class="form-group col-lg-6">
     <label for="lastName">Last Name</label>
     <input type="text" id="lastName" class="form-control" formControlName="lastName" [ngClass]="{'is-invalid' : customerForm.get('lastName')?.touched && customerForm.get('lastName')?.invalid}">
   </div>
-  <div class="form-group col-md-6">
+  <div class="form-group col-lg-6">
     <label for="refCode">Reference Code</label>
     <input type="text" id="refCode" class="form-control" formControlName="refCode" [ngClass]="{'is-invalid' : customerForm.get('refCode')?.touched && customerForm.get('refCode')?.invalid}">
     <div class="alert alert-danger" *ngIf="customerForm.get('refCode')?.touched && customerForm.get('refCode')?.invalid">
-      <div *ngIf="customerForm.get('refCode')?.hasError('required')"> Reference Code is required...</div>
-      <div *ngIf="customerForm.get('refCode')?.hasError('pattern')"> Invalid Reference Code...</div>
+      <div *ngIf="customerForm.get('refCode')?.hasError('required')"class="invalid"> Reference Code is required...</div>
+      <div *ngIf="customerForm.get('refCode')?.hasError('pattern')" class="invalid">Invalid Reference Code...</div>
     </div>
   </div>
-  <div class="form-group col-md-6">
+  <div class="form-group col-lg-6">
     <label for="email">Email Address</label>
     <input type="email" id="email" class="form-control" formControlName="email" [ngClass]="{'is-invalid' : customerForm.get('email')?.touched && customerForm.get('email')?.invalid}">
     <div class="alert alert-danger" *ngIf="customerForm.get('email')?.touched && customerForm.get('email')?.invalid">
-      <div *ngIf="customerForm.get('email')?.hasError('required')"> Email Address is required...</div>
-      <div *ngIf="customerForm.get('email')?.hasError('email')"> Invalid Email Address...</div>
+      <div *ngIf="customerForm.get('email')?.hasError('required')"class="invalid"> Email Address is required...</div>
+      <div *ngIf="customerForm.get('email')?.hasError('email')"class="invalid"> Invalid Email Address...</div>
     </div>
   </div>
-  <div class="form-group col-md-6">
+  <div class="form-group col-lg-6">
     <label for="selectedMaker">Automobile Maker</label>
     <select id="selectedMaker" class="form-control" formControlName="maker" [ngClass]="{'is-invalid' : customerForm.get('maker')?.touched && customerForm.get('maker')?.invalid}">
       <option value="" disabled>Select Maker</option>
@@ -38,7 +38,7 @@
     </select>
   </div>
   <!-- Display the Model dropdown only when a Maker is selected -->
-  <div class="form-group col-md-6" *ngIf="customerForm.get('maker')?.value">
+  <div class="form-group col-lg-6" *ngIf="customerForm.get('maker')?.value">
     <label for="selectedModel">Model</label>
     <select id="selectedModel" class="form-control" formControlName="model" [ngClass]="{'is-invalid' : customerForm.get('model')?.touched && customerForm.get('model')?.invalid}">
       <option value="" disabled>Select Model</option>
@@ -52,38 +52,24 @@
     </select>
   </div>
   
-  <div class="form-group col-12">
-    <label for="selectedConditions" [ngClass]="{'is-invalid' : customerForm.get('conditions')?.touched && customerForm.get('conditions')?.invalid}"> Car Condition (What Needs a Fix?)</label>
-    <div class="form-check mt-3 col-md-6">
-      <input class="form-check-input" type="checkbox" id="brakeIssue" formControlName="conditions.brakeIssue">
-      <label class="form-check-label" for="brakeIssue">Brake Issue</label>
-    </div>
-    <div class="form-check col-md-6">
-      <input class="form-check-input" type="checkbox" id="oilLeakage" formControlName="conditions.oilLeakage">
-      <label class="form-check-label" for="oilLeakage">Oil Leakage</label>
-    </div>
-    <div class="form-check col-md-6">
-      <input class="form-check-input" type="checkbox" id="gearboxIssue" formControlName="conditions.gearboxIssue">
-      <label class="form-check-label" for="gearboxIssue">Gearbox Issue</label>
-    </div>
-    <div class="form-check col-md-6">
-      <input class="form-check-input" type="checkbox" id="needRepainting" formControlName="conditions.needRepainting">
-      <label class="form-check-label" for="needRepainting">Need Repainting</label>
-    </div>
-    <div class="form-check col-md-6">
-      <input class="form-check-input" type="checkbox" id="wiringProblem" formControlName="conditions.wiringProblem">
-      <label class="form-check-label" for="wiringProblem">Wiring Problem</label>
-    </div>
-    <div class="form-check col-md-6">
-      <input class="form-check-input" type="checkbox" id="engineIssue" formControlName="conditions.engineIssue">
-      <label class="form-check-label" for="engineIssue">Engine Issue</label>
-    </div>
-    <div class="form-check col-md-6">
-      <input class="form-check-input" type="checkbox" id="needBodyRepair" formControlName="conditions.needBodyRepair">
-      <label class="form-check-label" for="needBodyRepair">Need Body Repair</label>
+  <div class="col-12">
+    <label for="">Car Condition: Where Do You Need a Fix?</label>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" [(ngModel)]="carConditions" (change)="toggleConditions()" [ngModelOptions]="{standalone: true}">
+      <label class="form-check-label" for="gridCheck">
+        Fix All
+      </label>
     </div>
   </div>
-  <div class="col-12">
+  <div *ngFor="let condition of conditions">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" [(ngModel)]="condition.selected" (change)="conditionsChanged()" [ngModelOptions]="{standalone: true}">
+      <label class="form-check-label" for="gridCheck">
+        {{condition.title}}
+      </label>
+    </div>
+  </div>  
+  <div class="col-12 mb-3 mt-5">
     <button type="submit" class="btn btn-primary" (click)="onNext()">Next</button>
   </div>
 </form>

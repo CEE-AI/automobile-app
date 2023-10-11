@@ -1,1 +1,13 @@
-<p>summary works!</p>
+<h2>Detailed Summary</h2>
+
+<div>
+  <p><strong>Full Name:</strong> {{ trimmedFullName }}</p>
+  <p><strong>Email:</strong> {{ email }}</p>
+  <p><strong>Reference Code:</strong> {{ refCode }}</p>
+  <p><strong>Automobile Maker:</strong> {{ selectedMaker }}</p>
+  <p><strong>Model:</strong> {{ selectedModel }}</p>
+  <p><strong>Car Conditions:</strong> {{ selectedConditionsString }}</p>
+</div>
+
+<button type="submit" class="btn btn-primary"(click)="onSubmit()">Submit</button>
+
