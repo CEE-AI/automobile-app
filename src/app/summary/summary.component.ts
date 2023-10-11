@@ -42,7 +42,8 @@ export class SummaryComponent {
 
         // Convert selectedConditions array to a comma-separated string
         this.selectedConditionsString = selectedConditions
-          .filter((condition:any) => condition)
+          .filter((condition: any) => condition)
+          .map((condition: any) => condition.title)
           .join(', ');
       }
     });

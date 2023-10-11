@@ -57,15 +57,6 @@ export class CustomerFormComponent {
       email: ["", [Validators.required, Validators.email]],
       maker: ["", Validators.required],
       model: ["", Validators.required],
-      conditions: this.fb.group({
-        brakeIssue: [false],
-        engineIssue: [false],
-        oilLeakage: [false],
-        wiringProblem: [false],
-        needRepainting: [false],
-        needBodyRepair: [false],
-        gearboxIssue: [false]
-      })
     });
   }
 
@@ -98,13 +89,17 @@ export class CustomerFormComponent {
     }
   }
 
-
   onNext() {
     this.customerForm.markAllAsTouched();
+    let selectedConditions = this.selectedConditions
 
     if (this.customerForm.valid) {
-      const formData = this.customerForm.value;
-      
+      const formData = this.customerForm.value;     
+      // Check if at least one condition is selected
+      if (!Object.values(selectedConditions).some(condition => condition)) {
+        alert("Please select at least one condition.");
+        return; // Prevent further execution
+      }
 
       const data = {
         firstName: formData.firstName,
@@ -113,12 +108,12 @@ export class CustomerFormComponent {
         email: formData.email,
         selectedMaker: formData.maker,
         selectedModel: formData.model,
-        selectedConditions: formData.conditions,
+        selectedConditions: selectedConditions,
       };
       // console.log(data)
       this.router.navigate(['/summary'], { state: { data } });
     } else {
-      // Handle validation errors
+        // Handle validation errors
       alert("Please fill all required fields correctly")
     }
   }
