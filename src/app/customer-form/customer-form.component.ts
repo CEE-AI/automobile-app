@@ -37,17 +37,6 @@ export class CustomerFormComponent {
     {'Maybach': ['Zeppelin', 'Exelero', 'GLS', 'SW35', 'SW45'] },
     {'Porsche': ['911', 'Cayenne', 'Panamera', '718 Cayman', 'Macan'] },
   ];
-  // isAtLeastOneCheckboxSelected(): boolean {
-  //   return (
-  //     this.engineIssue ||
-  //     this.gearboxIssue ||
-  //     this.needBodyRepair ||
-  //     this.needRepainting ||
-  //     this.wiringProblems ||
-  //     this.oilLeakage ||
-  //     this.brakeIssue
-  //   );
-  // }
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.customerForm = this.fb.group({

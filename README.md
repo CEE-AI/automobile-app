@@ -1,27 +1,12 @@
-# AutomobileApp
+# ClientSide
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
+This project was written in JavaScript in Angular framework using Bootstrap library for responsiveness and UI design
 
-## Development server
+## Why JavaScript and Angular Framework?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+JavaScript is a well developed and dynamic programming language that is supported by many browsers and it is very efficient for client-side development and is compatible with most CSS framework and HTML variants.
 
-## Code scaffolding
+Angular is an opinionated and robust framework that is broken down into organized components and routers that allows for reusable codes, scalability and easy managing of HTML, CSS, Typescript and testing.
+I used angular because of its typescript syntax that allowed for less coding errors, Dependency Injection that made it easy to manage dependencies in modules and components. Two-way data binding which allows automatic synchronization of data between the model and the view, reducing the need for manual DOM manipulation.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

@@ -60,6 +60,7 @@ export class SummaryComponent {
       conditions: this.selectedConditionsString,
     };
 
+    //convert object to JSON and logging to the browser console...
     console.log(JSON.stringify(jsonData));
   }
 }
