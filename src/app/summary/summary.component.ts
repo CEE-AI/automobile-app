@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 import { CustomerFormComponent } from '../customer-form/customer-form.component';
 
 @Component({
@@ -49,6 +50,10 @@ export class SummaryComponent {
     });
   }
 
+  onPrintPage(){
+    window.print()
+  }
+
   onSubmit() {
     // Create a JSON object with the summarized data
     const jsonData = {
@@ -62,5 +67,6 @@ export class SummaryComponent {
 
     //convert object to JSON and logging to the browser console...
     console.log(JSON.stringify(jsonData));
+    Swal.fire('Success', "THANK YOU for engaging our services", 'success')
   }
 }

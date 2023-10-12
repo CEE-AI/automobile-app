@@ -1,5 +1,5 @@
 <section class="container container-fluid">
-  <h2 class="title">Detailed Summary</h2>
+  <h2 class="title">{{ trimmedFullName }}'s Summary</h2>
 
   <div class="detail-info">
     <p><strong>Full Name:</strong> {{ trimmedFullName }}</p>
@@ -12,6 +12,8 @@
       <li *ngFor="let condition of selectedConditionsString.split(', ')">{{ condition }}</li>
     </ul>
   </div>
-
-  <button type="submit" class="btn btn-primary mt-5" (click)="onSubmit()">Submit</button>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary mt-5 me-2" (click)="onPrintPage()">Print</button>
+    <button type="submit" class="btn btn-primary mt-5" (click)="onSubmit()">Submit</button>
+  </div>
 </section>

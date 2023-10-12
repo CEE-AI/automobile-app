@@ -1,4 +1,5 @@
 .container-fluid{
+    background-color:hsl(210, 37%, 97%);;
     max-width: 800px;
     margin: 20px auto;
     position: relative;

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-customer-form',
@@ -10,6 +11,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/for
 export class CustomerFormComponent {
   customerForm: FormGroup;
   refCode: string = ''
+  //validation condition for reference code (refCode)
   refRegex: string = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
   carConditions = false;
 
@@ -49,12 +51,7 @@ export class CustomerFormComponent {
     });
   }
 
-  checkAtLeastOneCheckbox(formGroup: FormGroup) {
-    const values = Object.values(formGroup.value);
-    const isAtLeastOneSelected = values.some(value => value === true);
-    return isAtLeastOneSelected ? null : { atLeastOneCheckboxRequired: true };
-  }
-
+  // logic for selection of car conditions in checkboxes
   toggleConditions() {
     this.conditions.forEach((c) => (c.selected = this.carConditions))
   }
@@ -71,13 +68,15 @@ export class CustomerFormComponent {
     return this.conditions.every((c) => c.selected)
   }
 
+  // car model reset when maker is changed
   onMakerChange() {
     const modelControl = this.customerForm.get('model');
     if (modelControl) { // Check if the control exists
       modelControl.setValue(null);
     }
   }
-
+  
+  //Form page execution
   onNext() {
     this.customerForm.markAllAsTouched();
     let selectedConditions = this.selectedConditions
@@ -86,10 +85,11 @@ export class CustomerFormComponent {
       const formData = this.customerForm.value;     
       // Check if at least one condition is selected
       if (!Object.values(selectedConditions).some(condition => condition)) {
-        alert("Please select at least one condition.");
+        Swal.fire('Error',"Please select at least one car condition.", 'error');
         return; // Prevent further execution
       }
 
+      //Data value collation from form page and checkbox selection
       const data = {
         firstName: formData.firstName,
         lastName: formData.lastName,
@@ -103,7 +103,7 @@ export class CustomerFormComponent {
       this.router.navigate(['/summary'], { state: { data } });
     } else {
         // Handle validation errors
-      alert("Please fill all required fields correctly")
+      Swal.fire('Error',"Please fill all required fields correctly", 'error')
     }
   }
 }

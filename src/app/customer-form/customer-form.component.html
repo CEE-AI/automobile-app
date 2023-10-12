@@ -2,6 +2,11 @@
 
 <form [formGroup]="customerForm" class="container-fluid row g-3">
   <h2 class="title">Customer's Information</h2>
+  <!-- --------------------------------------
+  -                                         -
+  -    Section for Personal Information     -
+  -                                         -
+  --------------------------------------- -->
   <div class="form-group col-lg-6">
     <label for="firstName">First Name</label>
     <input type="text" id="firstName" class="form-control" formControlName="firstName" [ngClass]="{'is-invalid' : customerForm.get('firstName')?.touched && customerForm.get('firstName')?.invalid}">
@@ -32,7 +37,13 @@
       <div *ngIf="customerForm.get('email')?.hasError('email')"class="invalid"> Invalid Email Address...</div>
     </div>
   </div>
+  <!-- -------------------------------------
+  -                                        -
+  -    Section for Selecting Car Model     -
+  -                                        -
+  -------------------------------------- -->
   <div class="form-group col-lg-6">
+  <!-- Display the Model dropdown only when a Maker is selected -->
     <label for="selectedMaker">Automobile Maker</label>
     <select id="selectedMaker" class="form-control" formControlName="maker" [ngClass]="{'is-invalid' : customerForm.get('maker')?.touched && customerForm.get('maker')?.invalid}">
       <option value="" disabled>Select Maker</option>
@@ -57,13 +68,17 @@
       </ng-container>
     </select>
   </div>
-  
+  <!-- -------------------------------------
+  -                                        -
+  -    Section for Selecting Car Fixes     -
+  -                                        -
+  -------------------------------------- -->
   <div class="col-12">
     <label for="">Car Condition: Where Do You Need a Fix?</label><br/>
     <ng-container *ngIf="selectedConditions.length>0">
       {{selectedConditions.length}} conditions are selected <br/>
     </ng-container>
-    <div class="form-check">
+    <div class="form-check mt-2">
       <input class="form-check-input" type="checkbox" id="gridCheck" [(ngModel)]="carConditions" (change)="toggleConditions()" [ngModelOptions]="{standalone: true}" ngModel required>
       <label class="form-check-label" for="gridCheck">
         Fix All

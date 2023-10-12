@@ -67,15 +67,19 @@ To run this application locally, follow these steps:
 
    cd automobile-app
 
-3. Install the required dependencies using npm:
+3. Install Angular app globally:
+
+   npm install -g @angular/cli
+
+4. Install the required dependencies using npm:
 
    npm install
 
-4. Start the application:
+5. Start the application:
 
    ng serve
 
-5. Access the application in your web browser at `http://localhost:4200`.
+6. Access the application in your web browser at `http://localhost:4200`.
 
 
 ### 5. Usage
