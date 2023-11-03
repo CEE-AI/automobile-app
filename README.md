@@ -1,4 +1,4 @@
-# ClientSide
+# Client Side
 
 This project was written in JavaScript with Angular framework using Bootstrap library for responsiveness and UI design
 
@@ -19,8 +19,9 @@ I used angular because of its typescript syntax that allowed for less coding err
 1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Technologies Used](#technologies-used)
-4. [Installation](#installation)
-5. [Usage](#usage)
+4. [Web page](#4-web-page)
+5. [Installation](#installation)
+6. [Usage](#usage)
 
 ### 1. Introduction
 
@@ -50,11 +51,14 @@ The Automobile Repair Services Web Application is a comprehensive solution for c
 
 **Routing**: Angular Router
 
-**User Interface**: Angular Material for styling and UI components
+**User Interface**: Angular Bootstrap for styling and UI components
 
 **API Interaction**: Angular HTTPClient
 
-### 4. Installation
+### 4. Web page
+
+visit: https://car-repair-f0b5a.web.app/
+### 5. Installation
 
 To run this application locally, follow these steps:
 
@@ -82,7 +86,7 @@ To run this application locally, follow these steps:
 6. Access the application in your web browser at `http://localhost:4200`.
 
 
-### 5. Usage
+### 6. Usage
 1. Complete your user profile by providing your personal information, contact details, and car preferences.
 
 2. Select your car's make and model.
@@ -91,7 +95,7 @@ To run this application locally, follow these steps:
 
 4. Click the "Next" button to review your information on the summary page.
 
-5. If everything is correct, click "Submit" to confirm your service request.
+5. If all details are correct, click "Submit" to confirm your service request.
 
 ##END##
 

@@ -57,7 +57,7 @@ export class SummaryComponent {
   onSubmit() {
     // Create a JSON object with the summarized data
     const jsonData = {
-      name: this.trimmedFullName,
+      fullname: this.trimmedFullName,
       email: this.email,
       refcode: this.refCode,
       make: this.selectedMaker,
