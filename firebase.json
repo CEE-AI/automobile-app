@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/automobile-app",
+    "ignore": [
+      
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
