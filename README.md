@@ -16,12 +16,12 @@ I used angular because of its typescript syntax that allowed for less coding err
 
 **Table of Contents:**
 
-1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Technologies Used](#technologies-used)
+1. [Introduction](#1-introduction)
+2. [Features](#2-features)
+3. [Technologies Used](#3-technologies-used)
 4. [Web page](#4-web-page)
-5. [Installation](#installation)
-6. [Usage](#usage)
+5. [Installation](#5-installation)
+6. [Usage](#6-usage)
 
 ### 1. Introduction
 
