@@ -11,14 +11,13 @@ import { SummaryComponent } from './summary/summary.component';
   declarations: [
     AppComponent,
     CustomerFormComponent,
-    SummaryComponent
+    SummaryComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

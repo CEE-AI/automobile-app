@@ -16,7 +16,7 @@ export class SummaryComponent {
   selectedModel: string ='';
   selectedConditionsString: string ='';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(public route: ActivatedRoute) {
     this.route.paramMap.subscribe((params) => {
       const state = window.history.state.data;
 
